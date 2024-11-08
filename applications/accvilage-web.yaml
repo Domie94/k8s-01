@@ -1,28 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: accvillage-web
+  name: applications
 spec:
-  generators:
-  - clusters:
-      selector:
-        matchLabels:
-          custom: "true"
-  template:
-    metadata:
-      name: 'accvillage-web-{{name}}'
-    spec:
-      project: "default"
-      source:
-        repoURL: https://github.com/Domie94/k8s-01.git
-        targetRevision: main    
-        path: 'applications/accvillage-web'
-      destination:
-        name: in-cluster
-        namespace: accvillage-web
-      syncPolicy:
-        automated:
-          selfHeal: false
-          prune: true
-        syncOptions:
-          - CreateNamespace=true
+  destination:
+    name: ''
+    namespace: applications
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: applications/accvillage-web
+    repoURL: 'https://github.com/Domie94/k8s-01.git'
+    targetRevision: main
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
