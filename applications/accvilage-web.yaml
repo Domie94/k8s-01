@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: applications
+  name: accvilage-web
 spec:
   destination:
     name: ''
-    namespace: applications
+    namespace: accvilage-web
     server: 'https://kubernetes.default.svc'
   source:
     path: applications/accvillage-web
