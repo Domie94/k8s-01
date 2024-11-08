@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: accvillage-web  # ApplicationSet name
+  namespace: argocd  # Ensure Argo CD is installed in this namespace
+spec:
+  generators:
+    - git:
+        repoURL: 'https://github.com/Domie94/k8s-01.git'
+        revision: main
+        directories:
+          - path: 'applications/accvillage-web'  # Path to the application's manifest files within the Git repo
+  template:
+    metadata:
+      name: '{{path.basename}}'  # Application name based on the directory name, or set it explicitly as "accvillage-web"
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/Domie94/k8s-01.git'
+        targetRevision: main
+        path: '{{path}}'  # Dynamically uses the path from the generator; alternative: set to "applications/accvillage-web"
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: accvillage-web
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: false
+        syncOptions:
+          - CreateNamespace=true
