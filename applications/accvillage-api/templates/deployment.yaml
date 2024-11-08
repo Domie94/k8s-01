@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "accvillage-web.fullname" . }}
+  name: {{ include "accvillage-api.fullname" . }}
   labels:
-    app: {{ include "accvillage-web.name" . }}
+    app: {{ include "accvillage-api.name" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "accvillage-web.name" . }}
+      app: {{ include "accvillage-api.name" . }}
   template:
     metadata:
       labels:
-        app: {{ include "accvillage-web.name" . }}
+        app: {{ include "accvillage-api.name" . }}
     spec:
       containers:
-        - name: accvillage-web
+        - name: accvillage-api
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:

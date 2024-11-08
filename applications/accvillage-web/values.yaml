@@ -19,11 +19,11 @@ ingress:
     kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
   hosts:
-    - host: api.hometsd.me
+    - host: hometsd.me
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
     - hosts:
-        - api.hometsd.me
-      secretName: api.hometsd-me-tls
+        - hometsd.me
+      secretName: hometsd-me-tls
