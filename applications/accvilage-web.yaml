@@ -16,7 +16,7 @@ spec:
       source:
         repoURL: https://github.com/Domie94/k8s-01.git
         targetRevision: main    
-        path: 'applicatins/accvillage-web'
+        path: 'applications/accvillage-web'
       destination:
         name: in-cluster
         namespace: accvillage-web
