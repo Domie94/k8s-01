@@ -1,15 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "accvillage-web.fullname" . }}
+  name: {{ include "webapi.fullname" . }}
   labels:
-    {{- include "accvillage-web.labels" . | nindent 4 }}
+    app: {{ include "webapi.name" . }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+      targetPort: 3001
   selector:
-    {{- include "accvillage-web.selectorLabels" . | nindent 4 }}
+    app: {{ include "webapi.name" . }}
