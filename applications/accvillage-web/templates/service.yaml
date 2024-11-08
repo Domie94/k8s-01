@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "webapi.fullname" . }}
+  name: {{ include "accvillage-web.fullname" . }}
   labels:
-    app: {{ include "webapi.name" . }}
+    app: {{ include "accvillage-web.name" . }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 3001
   selector:
-    app: {{ include "webapi.name" . }}
+    app: {{ include "accvillage-web.name" . }}
