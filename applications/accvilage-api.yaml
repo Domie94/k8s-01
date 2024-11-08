@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: accvillage-api  # ApplicationSet name
+  name: accvillage-api-test  # ApplicationSet name
   namespace: argocd  # Ensure Argo CD is installed in this namespace
 spec:
   generators:
@@ -21,7 +21,7 @@ spec:
         path: '{{path}}'  # Dynamically uses the path from the generator; alternative: set to "applications/accvillage-web"
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: accvillage-api
+        namespace: accvillage-api-test
       syncPolicy:
         automated:
           prune: false
