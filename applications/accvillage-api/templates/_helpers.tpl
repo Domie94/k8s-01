@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "accvillage-web.name" -}}
+{{- define "accvillage-api.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "accvillage-web.fullname" -}}
+{{- define "accvillage-api.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "accvillage-web.chart" -}}
+{{- define "accvillage-api.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "accvillage-web.labels" -}}
-helm.sh/chart: {{ include "accvillage-web.chart" . }}
-{{ include "accvillage-web.selectorLabels" . }}
+{{- define "accvillage-api.labels" -}}
+helm.sh/chart: {{ include "accvillage-api.chart" . }}
+{{ include "accvillage-api.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "accvillage-web.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "accvillage-web.name" . }}
+{{- define "accvillage-api.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "accvillage-api.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "accvillage-web.serviceAccountName" -}}
+{{- define "accvillage-api.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "accvillage-web.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "accvillage-api.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
