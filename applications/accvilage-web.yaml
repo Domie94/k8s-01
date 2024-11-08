@@ -15,7 +15,7 @@ spec:
       project: "default"
       source:
         repoURL: https://github.com/Domie94/k8s-01.git
-        targetRevision: "{{name}}" #Based on environment
+        targetRevision: main    
         path: 'applicatins/accvillage-web'
       destination:
         name: in-cluster
