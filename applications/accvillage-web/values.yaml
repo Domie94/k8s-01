@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: tsdadmin/villageaccountingfontend
+  repository: tsdadmin/villageaccountingapi
   pullPolicy: IfNotPresent
   tag: "latest"
 
