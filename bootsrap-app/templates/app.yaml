@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default                     # Argo CD project to use (default or custom project)
   source:
-    repoURL: 'https://your-git-repo-url.git'   # Git repository URL containing the Helm chart
+    repoURL: 'https://github.com/Domie94/k8s-01.git'   # Git repository URL containing the Helm chart
     targetRevision: main                        # Branch, tag, or commit SHA to deploy (e.g., "main")
     path: applicatins                        # Path to the Helm chart within the Git repo
     helm:

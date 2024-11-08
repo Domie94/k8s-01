@@ -14,9 +14,9 @@ spec:
     spec:
       project: "default"
       source:
-        repoURL: https://github.com/devops-skill-experts/argocd-demo.git
+        repoURL: https://github.com/Domie94/k8s-01.git
         targetRevision: "{{name}}" #Based on environment
-        path: '03-argocd-apps/manifests/hello'
+        path: 'applicatins/accvillage-web'
       destination:
         name: in-cluster
         namespace: accvillage-web
