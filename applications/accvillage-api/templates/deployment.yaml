@@ -20,5 +20,5 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 80
-      imagePullSecrets:
-        - name: {{ .Values.imagePullSecrets | first }}
+      # imagePullSecrets:
+      #   - name: {{ .Values.imagePullSecrets | first }}
