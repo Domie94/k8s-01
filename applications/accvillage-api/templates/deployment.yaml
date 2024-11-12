@@ -1,24 +1,54 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: {{ include "accvillage-api.fullname" . }}
+#   labels:
+#     app: {{ include "accvillage-api.name" . }}
+# spec:
+#   replicas: {{ .Values.replicaCount }}
+#   selector:
+#     matchLabels:
+#       app: {{ include "accvillage-api.name" . }}
+#   template:
+#     metadata:
+#       labels:
+#         app: {{ include "accvillage-api.name" . }}
+#     spec:
+#       containers:
+#         - name: accvillage-api
+#           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+#           imagePullPolicy: {{ .Values.image.pullPolicy }}
+#           ports:
+#             - containerPort: 80
+#       imagePullSecrets:
+#         - name: {{ .Values.imagePullSecrets | first }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "accvillage-api.fullname" . }}
+  name: accvilage-api
   labels:
-    app: {{ include "accvillage-api.name" . }}
+    app: accvilage-api
+  annotations:
+{{- if .Values.vault.enabled }}
+{{ toYaml .Values.vault.annotations | indent 4 }}
+{{- end }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      app: {{ include "accvillage-api.name" . }}
+      app: accvilage-api
   template:
     metadata:
       labels:
-        app: {{ include "accvillage-api.name" . }}
+        app: accvilage-api
     spec:
       containers:
-        - name: accvillage-api
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: 80
-      imagePullSecrets:
-        - name: {{ .Values.imagePullSecrets | first }}
+        - name: accvilage-api
+          image: registry.gitlab.com/your-repo/your-image:latest
+          volumeMounts:
+            - name: docker-config
+              mountPath: /kaniko/.docker/config.json
+              subPath: config.json
+      volumes:
+        - name: docker-config
+          emptyDir: {}
