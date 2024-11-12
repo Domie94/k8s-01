@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: registry.gitlab.com/villageaccounting/villageaccapi:latest
+  repository: registry.gitlab.com/villageaccounting/villageaccapi
   pullPolicy: IfNotPresent
-  # tag: "latest"
+  tag: "latest"
 
 imagePullSecrets:
   - name: registry-gitlab
