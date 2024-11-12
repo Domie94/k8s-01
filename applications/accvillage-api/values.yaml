@@ -29,7 +29,7 @@ vault:
   enabled: true
   annotations:
     vault.hashicorp.com/agent-inject: "true"
-    vault.hashicorp.com/role: "dockerhub-policy"  # ระบุ role ที่ใช้ใน Vault
+    vault.hashicorp.com/role: "dockerhub-policys"  # ระบุ role ที่ใช้ใน Vault
     vault.hashicorp.com/agent-inject-secret-docker-config: "gitlab/pull"
     vault.hashicorp.com/agent-inject-template-docker-config: |
       {
