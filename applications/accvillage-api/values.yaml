@@ -5,6 +5,8 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
+imagePullSecrets:
+  - name: gitlab-secert
 service:
   type: ClusterIP
   port: 80
@@ -24,19 +26,3 @@ ingress:
     - hosts:
         - api.hometsd.me
       secretName: api.hometsd-me-tls
-
-annotations:
-  vault.hashicorp.com/agent-inject: "true"
-  vault.hashicorp.com/agent-inject-secret-imagepull: "gitlab/pull"
-  vault.hashicorp.com/agent-inject-template-imagepull: |
-    {{- with secret "gitlab/pull" -}}
-    {
-      "auths": {
-        "registry.gitlab.com": {
-          "username": "{{ .Data.username }}",
-          "password": "{{ .Data.password }}",
-          "auth": "{{ printf "%s:%s" .Data.username .Data.password | base64 }}"
-        }
-      }
-    }
-    {{- end }}
