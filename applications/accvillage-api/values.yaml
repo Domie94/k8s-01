@@ -6,7 +6,7 @@ image:
   tag: "latest"
 
 imagePullSecrets:
-  - name: registry-gitlab
+  - name: gitlab-secert
 
 service:
   type: ClusterIP
