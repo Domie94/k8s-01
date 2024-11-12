@@ -1,12 +1,12 @@
 replicaCount: 1
 
 image:
-  repository: tsdadmin/villageaccountingapi
+  repository: registry.gitlab.com/villageaccounting/villageaccapi
   pullPolicy: IfNotPresent
   tag: "latest"
 
 imagePullSecrets:
-  - name: hub-docker
+  - name: registry-gitlab
 
 service:
   type: ClusterIP
