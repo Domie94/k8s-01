@@ -7,7 +7,6 @@ image:
 
 imagePullSecrets:
   - name: gitlab-secert
-
 service:
   type: ClusterIP
   port: 80
