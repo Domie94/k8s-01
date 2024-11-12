@@ -24,5 +24,12 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: docker-config
+              mountPath: /kaniko/.docker/config.json
+              subPath: config.json
+      volumes:
+        - name: docker-config
+          emptyDir: {}
       # imagePullSecrets:
       #   - name: {{ .Values.imagePullSecrets | first }}
