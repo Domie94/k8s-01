@@ -5,8 +5,7 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
-imagePullSecrets:
-  - name: hub-docker
+imagePullSecrets: [hub-docker]
 
 service:
   type: ClusterIP
