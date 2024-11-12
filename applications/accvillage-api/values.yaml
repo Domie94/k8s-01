@@ -6,7 +6,8 @@ image:
   tag: "latest"
 
 imagePullSecrets:
-  - name: gitlab-secert
+  - name: gitlab-secret
+
 service:
   type: ClusterIP
   port: 80
@@ -26,3 +27,14 @@ ingress:
     - hosts:
         - api.hometsd.me
       secretName: api.hometsd-me-tls
+
+annotations:
+  vault.hashicorp.com/agent-inject: "true"
+  vault.hashicorp.com/agent-inject-secret-gitlab-secret: "gitlab/pull"
+  vault.hashicorp.com/agent-inject-template-gitlab-secret: |
+    {{- with secret "gitlab/pull" -}}
+    - name: gitlab-secret
+      type: kubernetes.io/dockerconfigjson
+      data:
+        .dockerconfigjson: {{ .Data.data | base64encode }}
+    {{- end }}

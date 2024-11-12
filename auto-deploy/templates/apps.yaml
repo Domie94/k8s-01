@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: auto-deploy
-  namespace: default
+  namespace: argocd
 spec:
   # The project the application belongs to.
   project: default
@@ -10,7 +10,6 @@ spec:
   # Source of the application manifests
   source:
     repoURL: https://github.com/Domie94/k8s-01.git
-    argetRevision: production
     path: 'applications'
 
   # Destination cluster and namespace to deploy the application
