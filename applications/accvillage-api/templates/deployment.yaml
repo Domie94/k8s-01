@@ -4,10 +4,6 @@ metadata:
   name: {{ include "accvillage-api.fullname" . }}
   labels:
     app: {{ include "accvillage-api.name" . }}
-  annotations:
-{{- if .Values.vault.enabled }}
-{{ toYaml .Values.vault.annotations | indent 4 }}
-{{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -24,3 +20,5 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 80
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets | first }}
