@@ -5,6 +5,7 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
+imagePullSecrets : [gitlab-secert]
 service:
   type: ClusterIP
   port: 80
