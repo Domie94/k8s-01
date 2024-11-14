@@ -5,7 +5,7 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
-# imagePullSecrets : [gitlab-secert]
+imagePullSecrets : [gitlab-secert]
 service:
   type: ClusterIP
   port: 80
@@ -25,18 +25,3 @@ ingress:
     - hosts:
         - api.hometsd.me
       secretName: api.hometsd-me-tls
-vault:
-  enabled: true
-  annotations:
-    vault.hashicorp.com/agent-inject: "true"
-    vault.hashicorp.com/role: "dockerhub-policy"  # ระบุ role ที่ใช้ใน Vault
-    vault.hashicorp.com/agent-inject-secret-docker-config: "secret/gitlab/pull"
-    vault.hashicorp.com/agent-inject-template-docker-config: |
-      {
-        "auths": {
-          "registry.gitlab.com": {
-            "username": "{{ .Data.gitlab_username }}",
-            "password": "{{ .Data.gitlab_password }}"
-          }
-        }
-      }
