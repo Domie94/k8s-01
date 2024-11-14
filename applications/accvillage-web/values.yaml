@@ -1,11 +1,11 @@
 replicaCount: 1
 
 image:
-  repository: tsdadmin/villageaccountingfontend
+  repository: registry.gitlab.com/villageaccounting/accvillage-web
   pullPolicy: IfNotPresent
   tag: "latest"
 
-imagePullSecrets: [hub-docker]
+imagePullSecrets: [gitlab-secert]
 
 service:
   type: ClusterIP
