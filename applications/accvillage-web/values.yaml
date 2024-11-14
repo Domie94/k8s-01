@@ -5,7 +5,7 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
-imagePullSecrets: [gitlab-secert]
+imagePullSecrets: [gitlab-secert-web]
 
 service:
   type: ClusterIP
