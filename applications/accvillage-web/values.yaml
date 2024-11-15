@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: registry.gitlab.com/villageaccounting/accvillage-web
   pullPolicy: Always
-  tag: "latest"
+  tag: "v1.0.1"
 
 imagePullSecrets: [gitlab-secert-web]
 
