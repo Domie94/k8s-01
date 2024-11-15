@@ -4,6 +4,9 @@ metadata:
   name: {{ include "accvillage-web.fullname" . }}
   labels:
     app: {{ include "accvillage-web.name" . }}
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: "{{ .Values.image.repository }}"
+    argocd-image-updater.argoproj.io/update-strategy: latest
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
