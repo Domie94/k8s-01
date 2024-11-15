@@ -13,9 +13,6 @@ spec:
   template:
     metadata:
       name: '{{path.basename}}'
-      annotations:
-        argocd-image-updater.argoproj.io/image-list: "registry.gitlab.com/villageaccounting/accvillage-web"
-        argocd-image-updater.argoproj.io/update-strategy: "latest"
     spec:
       project: default
       source:
