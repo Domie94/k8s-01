@@ -21,7 +21,7 @@ spec:
     - host: argocd.hometsd.me
       http:
         paths:
-          - path: /argo-cd
+          - path: /
             pathType: ImplementationSpecific
             backend:
               service:
