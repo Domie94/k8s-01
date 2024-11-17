@@ -3,9 +3,8 @@ kind: Ingress
 metadata:
   name: {{ include "accvillage-web.fullname" . }}
   annotations:
-    {{- range $key, $value := .Values.ingress.annotations }}
-    {{ $key }}: {{ $value | quote }}
-    {{- end }}
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   rules:
     - host: {{ (index .Values.ingress.hosts 0).host }}
