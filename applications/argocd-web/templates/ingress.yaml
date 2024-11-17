@@ -8,17 +8,25 @@ metadata:
     {{- end }}
 spec:
   rules:
-    - host: {{ (index .Values.ingress.hosts 0).host }}
+    {{- range .Values.ingress.hosts }}
+    - host: {{ .host }}
       http:
         paths:
-          - path: {{ (index (index .Values.ingress.hosts 0).paths 0).path }}
-            pathType: {{ (index (index .Values.ingress.hosts 0).paths 0).pathType }}
+          {{- range .paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
             backend:
               service:
-                name: {argocd-server}
+                name: argocd-server
                 port:
-                  number: {443}
+                  number: 443
+          {{- end }}
+    {{- end }}
   tls:
+    {{- range .Values.ingress.tls }}
     - hosts:
-        - {{ (index .Values.ingress.hosts 0).host }}
-      secretName: {{ (index .Values.ingress.tls 0).secretName }}
+        {{- range .hosts }}
+        - {{ . }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
