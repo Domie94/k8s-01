@@ -15,9 +15,9 @@ spec:
             pathType: {{ (index (index .Values.ingress.hosts 0).paths 0).pathType }}
             backend:
               service:
-                name: {{ include "argocd-web.fullname" . }}
+                name: {argocd-server}
                 port:
-                  number: {{ .Values.service.port }}
+                  number: {443}
   tls:
     - hosts:
         - {{ (index .Values.ingress.hosts 0).host }}
