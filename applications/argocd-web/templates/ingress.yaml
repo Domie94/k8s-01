@@ -20,4 +20,4 @@ spec:
               service:
                 name: argocd-web
                 port:
-                  number: server
+                  number: 443
