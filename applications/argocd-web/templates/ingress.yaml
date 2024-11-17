@@ -1,24 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argocd-ing
+  name: {{ include "argocd-web.fullname" . }}
   annotations:
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    {{- range $key, $value := .Values.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
 spec:
   rules:
-    - host: argocd.hometsd.me
+    - host: {{ (index .Values.ingress.hosts 0).host }}
       http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: {{ (index (index .Values.ingress.hosts 0).paths 0).path }}
+            pathType: {{ (index (index .Values.ingress.hosts 0).paths 0).pathType }}
             backend:
               service:
-                name: argocd-server
+                name: {{ include "argocd-web.fullname" . }}
                 port:
-                  number: 443
+                  number: {{ .Values.service.port }}
   tls:
     - hosts:
-        - argocd.hometsd.me
-      secretName: argocd.hometsd.me-tls
+        - {{ (index .Values.ingress.hosts 0).host }}
+      secretName: {{ (index .Values.ingress.tls 0).secretName }}
