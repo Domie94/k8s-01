@@ -8,16 +8,16 @@ metadata:
 spec:
   tls:
     - hosts:
-      - {{ .Values.domain }}
+      - argocd.hometsd.me
       secretName: argocd-hometsd-me-tls
   rules:
-    - host: {{ .Values.domain }}
+    - host: argocd.hometsd.me
       http:
         paths:
           - path: /
             pathType: ImplementationSpecific
             backend:
               service:
-                name: argocd-web
+                name: argocd-server
                 port:
                   number: 80
