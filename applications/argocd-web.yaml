@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: argocd-web
+  name: argocd
   namespace: argocd
 spec:
   generators:
@@ -21,7 +21,7 @@ spec:
         path: '{{path}}'
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: argocd-web
+        namespace: argocd
       syncPolicy:
         automated:
           prune: true  # Enables automatic pruning of resources not defined in Git
