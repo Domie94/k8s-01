@@ -1,1 +1,5 @@
+service:
+  type: ClusterIP
+  port: 80
+
 domain: argocd.hometsd.me
