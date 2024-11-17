@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: accvillage-web
+  name: argocd
   namespace: argocd
 spec:
   generators:
@@ -9,7 +9,7 @@ spec:
         repoURL: 'https://github.com/Domie94/k8s-01.git'
         revision: main
         directories:
-          - path: 'applications/accvillage-web'
+          - path: 'applications/argocd-web'
   template:
     metadata:
       name: '{{path.basename}}'
@@ -21,7 +21,7 @@ spec:
         path: '{{path}}'
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: accvillage-web
+        namespace: argocd-web
       syncPolicy:
         automated:
           prune: true  # Enables automatic pruning of resources not defined in Git
