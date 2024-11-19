@@ -1,12 +1,11 @@
 apiVersion: v2
-name: hashicorp
-description: A Helm chart for Kubernetes
+name: hashicorp-vault
+description: A Helm chart for deploying HashiCorp Vault on Kubernetes
 type: application
-
 version: 0.1.0
+appVersion: "1.18.1"
 
-appVersion: "1.16.0"
 dependencies:
   - name: vault
-    version: "1.18.1"  
-    repository: "https://helm.releases.hashicorp.com"  
+    version: "1.18.1"
+    repository: "https://helm.releases.hashicorp.com"
