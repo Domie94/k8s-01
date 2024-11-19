@@ -1,0 +1,37 @@
+server:
+  ha:
+    enabled: false
+  dataStorage:
+    enabled: true
+    size: 10Gi
+    storageClass: standard
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1024Mi"
+      cpu: "500m"
+  service:
+    type: ClusterIP
+    externalPort: 8200
+  ui:
+    enabled: true
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  hosts:
+    - host: vault.hometsd.me
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: vault-tls
+      hosts:
+        - vault.hometsd.me
+
+tls:
+  enabled: false
