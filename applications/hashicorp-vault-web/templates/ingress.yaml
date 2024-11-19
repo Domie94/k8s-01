@@ -27,4 +27,4 @@ spec:
               service:
                 name: vault
                 port:
-                  name: https-internal
+                  name: http
