@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Chart.Name }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.service.type | default "ClusterIP" }}  # ใช้ค่าเริ่มต้นเป็น ClusterIP หากไม่ได้กำหนด
   ports:
     - port: 8200
       targetPort: 8200
