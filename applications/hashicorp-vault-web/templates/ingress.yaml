@@ -25,6 +25,6 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: vault-internal
+                name: vault
                 port:
-                  name: http
+                  name: https-internal
