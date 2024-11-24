@@ -20,5 +20,5 @@ ingress:
   pathType: Prefix
 
 proxy:
-  apiUrl: http://tws.mof.gov.la:8080
+  apiUrl: http://tws.mof.gov.la:8080/mediate/TaxRIS/createPfmFromCRSDtl/SndCrs
 
