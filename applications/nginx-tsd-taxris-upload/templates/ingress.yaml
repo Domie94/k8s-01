@@ -6,13 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-set-headers: "custom-headers"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    kubernetes.io/ingress.class: "nginx"
 spec:
-  tls:
-  - hosts:
-    - tsdtax.hometsd.me
-    secretName: tsdtax-hometsd-me-tls
   rules:
   - host: tsdtax.hometsd.me
     http:
@@ -24,5 +18,3 @@ spec:
             name: external-service
             port:
               number: 80
-
-
