@@ -3,16 +3,14 @@ kind: Ingress
 metadata:
   name: forward-proxy-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/rewrite-target: /  
 spec:
   rules:
-  - host: tsdtax.hometsd.me
+  - host: tsdtax.hometsd.me  
     http:
       paths:
       - path: /mediate/TaxRIS/createPfmFromCRSDtl/SndCrs
-        pathType: ImplementationSpecific
+        pathType: Prefix  
         backend:
           service:
             name: forward-proxy-service
