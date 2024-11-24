@@ -21,7 +21,7 @@ spec:
         path: '{{path}}'
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: tsd-taxris-upload
+        namespace: nginx-tsd-taxris-upload
       syncPolicy:
         automated:
           prune: true  # Enable pruning of resources that are no longer in Git
