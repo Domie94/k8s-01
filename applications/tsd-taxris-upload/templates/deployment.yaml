@@ -18,5 +18,6 @@ spec:
         - name: tsd-taxris-upload
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["dotnet", "TSD-TAXRIS-UPLOAD.dll"]
       imagePullSecrets:
         - name: {{ .Values.imagePullSecrets | first }}
