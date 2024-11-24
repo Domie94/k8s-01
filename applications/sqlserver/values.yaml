@@ -10,5 +10,9 @@ service:
   port: 1433
 
 persistence:
-  storageClass: "manual"
-  size: 30Gi                      # Storage size for PVC
+  storageClass: "do-block-storage"
+  size: 10Gi
+
+secret:
+  name: mssql-sa-password-secret  # Ensure this matches the name of your Kubernetes secret
+  key: MSSQL_SA_PASSWORD          # Key inside the secret
