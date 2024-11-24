@@ -38,13 +38,13 @@ spec:
           volumeMounts:
             - name: mssql-storage
               mountPath: /var/opt/mssql
-  volumeClaimTemplates:
-    - metadata:
-        name: mssql-storage
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: {{ .Values.persistence.size }}
-        storageClassName: "{{ .Values.persistence.storageClass }}"
+volumeClaimTemplates:
+  - metadata:
+      name: mssql-storage
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: {{ .Values.persistence.size }}
+      storageClassName: "{{ .Values.persistence.storageClass }}"
