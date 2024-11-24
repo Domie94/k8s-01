@@ -17,6 +17,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 10001
+        allowPrivilegeEscalation: false
       containers:
         - name: mssql
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
