@@ -9,7 +9,7 @@ spec:
   - host: taxris.hometsd.me
     http:
       paths:
-      - path: /mediate/TaxRIS/createPfmFromCRSDtl/SndCrs
+      - path: /
         pathType: Prefix
         backend:
           service:
