@@ -11,7 +11,7 @@ service:
 
 persistence:
   storageClass: "do-block-storage"
-  size: 10Gi
+  size: 30Gi
 
 secret:
   name: mssql-sa-password-secret  # Ensure this matches the name of your Kubernetes secret
