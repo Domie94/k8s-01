@@ -13,6 +13,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: taxris-nginx-service
+            name: forward-proxy-service
             port:
               number: 80
