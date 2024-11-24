@@ -10,9 +10,9 @@ service:
   port: 1433
 
 persistence:
-  storageClass: "do-block-storage"
-  size: 30Gi
+  storageClass: "do-block-storage" # Use DigitalOcean's StorageClass
+  size: 30Gi                      # Define storage size for the PersistentVolumeClaim
 
 secret:
-  name: mssql-sa-password-secret  # Ensure this matches the name of your Kubernetes secret
-  key: MSSQL_SA_PASSWORD          # Key inside the secret
+  name: mssql-sa-password-secret  # Kubernetes Secret name
+  key: MSSQL_SA_PASSWORD          # Key inside the Secret
