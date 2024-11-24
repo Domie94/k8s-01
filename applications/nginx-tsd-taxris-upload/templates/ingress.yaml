@@ -4,7 +4,6 @@ metadata:
   name: taxris-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
 spec:
   rules:
   - host: taxris.hometsd.me
