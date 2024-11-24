@@ -16,9 +16,8 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
-  path: /
+  path: /mediate/TaxRIS/createPfmFromCRSDtl/SndCrs
   pathType: Prefix
 
 proxy:
-  apiUrl: http://tws.mof.gov.la:8080/mediate/TaxRIS/createPfmFromCRSDtl/SndCrs
-
+  apiUrl: http://tws.mof.gov.la:8080
