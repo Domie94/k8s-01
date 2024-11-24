@@ -26,4 +26,5 @@ spec:
           service:
             name: external-service
             port:
-              number: 8080
+              number: 80
+              
