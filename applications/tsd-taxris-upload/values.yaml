@@ -1,8 +1,7 @@
 replicaCount: 1
-
 image:
   repository: tsdadmin/tsd-taxris-upload
   pullPolicy: Always
-  tag: "latest"
-
-imagePullSecrets : [hub-docker]
+  tag: latest
+imagePullSecrets:
+  - hub-docker
