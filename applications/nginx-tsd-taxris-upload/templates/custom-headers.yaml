@@ -5,3 +5,4 @@ metadata:
 data:
   X-Forwarded-For: $remote_addr
   X-Forwarded-Host: $host
+  Host: tws.mof.gov.la
