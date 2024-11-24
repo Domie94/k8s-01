@@ -6,5 +6,5 @@ spec:
   type: ExternalName
   externalName: tws.mof.gov.la
   ports:
-  - port: 80
+  - port: 8080
     targetPort: 8080
