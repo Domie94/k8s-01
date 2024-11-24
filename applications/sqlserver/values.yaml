@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: mcr.microsoft.com/mssql/server
+  tag: "2022-latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 1433
+
+persistence:
+  storageClass: "" # Leave blank to use the default storage class
+  size: 30Gi        # Adjust based on your needs
+
+secret:
+  name: mssql-sa-password-secret # Kubernetes Secret name
+  key: MSSQL_SA_PASSWORD         # Key in the Secret
