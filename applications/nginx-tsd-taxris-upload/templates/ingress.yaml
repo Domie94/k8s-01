@@ -4,7 +4,6 @@ metadata:
   name: tsdtax-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-set-headers: "custom-headers"
 spec:
   rules:
