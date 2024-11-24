@@ -6,8 +6,7 @@ data:
   default.conf: |
     server {
         listen 80;
-        server_name tsdtax.hometsd.me;
-        
+
         location / {
             proxy_pass {{ .Values.proxy.apiUrl }};
             proxy_set_header Host $host;

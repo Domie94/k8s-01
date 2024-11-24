@@ -3,9 +3,9 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-nginx-ingress
   annotations:
-{{- range $key, $value := .Values.ingress.annotations }}
+    {{- range $key, $value := .Values.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
-{{- end }}
+    {{- end }}
 spec:
   rules:
   - host: {{ .Values.ingress.host }}
@@ -18,3 +18,4 @@ spec:
             name: {{ .Release.Name }}-nginx-service
             port:
               number: {{ .Values.service.port }}
+
