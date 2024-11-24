@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /  
 spec:
   rules:
-  - host: tsdtax.hometsd.me  
+  - host: taxris.hometsd.me  
     http:
       paths:
       - path: /mediate/TaxRIS/createPfmFromCRSDtl/SndCrs
