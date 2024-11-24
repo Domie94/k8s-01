@@ -18,7 +18,3 @@ spec:
             name: {{ .Release.Name }}-nginx-service
             port:
               number: {{ .Values.service.port }}
-  tls:
-    - hosts:
-        - {{ (index .Values.ingress.hosts 0).host }}
-      secretName: {{ (index .Values.ingress.tls 0).secretName }}
