@@ -16,7 +16,7 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       securityContext:
-        fsGroup: 10001
+        runAsUser: 10001
         allowPrivilegeEscalation: false
       containers:
         - name: mssql
