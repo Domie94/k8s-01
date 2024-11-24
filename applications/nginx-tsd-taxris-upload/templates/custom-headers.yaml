@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: custom-headers
-  namespace: nginx-tsd-taxris-upload
 data:
-  Content-Type: text/xml
-  Host: tws.mof.gov.la
+  X-Forwarded-For: $remote_addr
+  X-Forwarded-Host: $host
+  

@@ -5,9 +5,8 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
     nginx.ingress.kubernetes.io/proxy-set-headers: "custom-headers"
-    nginx.ingress.kubernetes.io/upstream-vhost: "tws.mof.gov.la"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -27,4 +26,4 @@ spec:
           service:
             name: external-service
             port:
-              number: 80
+              number: 8080
