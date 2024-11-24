@@ -16,8 +16,7 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       securityContext:
-        runAsUser: 10001
-        allowPrivilegeEscalation: false
+        fsGroup: 10001
       containers:
         - name: mssql
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -33,6 +32,9 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secret.name }}
                   key: {{ .Values.secret.key }}
+          securityContext:
+            runAsUser: 10001
+            allowPrivilegeEscalation: false
           volumeMounts:
             - name: mssql-storage
               mountPath: /var/opt/mssql
@@ -45,4 +47,4 @@ spec:
         resources:
           requests:
             storage: {{ .Values.persistence.size }}
-        storageClassName: "{{ .Values.persistence.storageClass }}"
+        storageClassName: "manual"

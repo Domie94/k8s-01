@@ -9,7 +9,7 @@ spec:
     storage: {{ .Values.persistence.size }}
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: {{ .Values.persistence.reclaimPolicy }}
-  storageClassName: "{{ .Values.persistence.storageClass }}"
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: "manual"
   hostPath:
-    path: /mnt/data/{{ .Release.Name }}-mssql
+    path: /mnt/data/{{ .Release.Name }}-mssql # Replace this path with a directory on the node

@@ -10,10 +10,5 @@ service:
   port: 1433
 
 persistence:
-  storageClass: "do-block-storage" # Dynamic provisioning with DigitalOcean storage class
+  storageClass: "manual"
   size: 30Gi                      # Storage size for PVC
-  reclaimPolicy: Retain           # Keep data even if PVC is deleted
-
-secret:
-  name: mssql-sa-password-secret  # Pre-created Kubernetes Secret name
-  key: MSSQL_SA_PASSWORD          # Key in the Secret
