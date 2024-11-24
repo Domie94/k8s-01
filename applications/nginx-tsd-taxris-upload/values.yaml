@@ -1,23 +1,14 @@
-replicaCount: 1
-
-image:
-  repository: nginx
-  tag: "latest"
-  pullPolicy: IfNotPresent
-
-service:
-  type: ClusterIP
-  port: 80
-
 ingress:
   enabled: true
-  host: tsdtax.hometsd.me
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
-  path: /mediate/TaxRIS/createPfmFromCRSDtl/SndCrs
-  pathType: Prefix
+  hosts:
+    - host: tsdtax.hometsd.me
+      paths:
+        - path: /mediate/TaxRIS/createPfmFromCRSDtl/SndCrs
 
-proxy:
-  apiUrl: http://tws.mof.gov.la:8080
+service:
+  name: tax-backend-service
+  port: 8080
+  targetPort: 8080
+
+app:
+  name: tax-backend
