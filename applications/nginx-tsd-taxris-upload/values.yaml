@@ -11,7 +11,7 @@ service:
 
 ingress:
   enabled: true
-  host: <your-ingress-ip-or-domain>
+  host: tsdtax.hometsd.me
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
