@@ -18,7 +18,5 @@ spec:
         - name: tsd-taxris-upload
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: 80
       imagePullSecrets:
         - name: {{ .Values.imagePullSecrets | first }}
