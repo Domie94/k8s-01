@@ -1,18 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: forward-proxy-ingress
+  name: taxris-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /  
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
 spec:
   rules:
-  - host: taxris.hometsd.me  
+  - host: taxris.hometsd.me
     http:
       paths:
       - path: /mediate/TaxRIS/createPfmFromCRSDtl/SndCrs
-        pathType: Prefix  
+        pathType: Prefix
         backend:
           service:
-            name: forward-proxy-service
+            name: taxris-nginx-service
             port:
               number: 80

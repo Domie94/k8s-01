@@ -1,13 +1,15 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: forward-proxy-config
+  name: taxris-nginx-config
 data:
   nginx.conf: |
     server {
         listen 80;
+        server_name taxris.hometsd.me;
+
         location /mediate/TaxRIS/createPfmFromCRSDtl/SndCrs {
-            proxy_pass http://tws.mof.gov.la:8080/mediate/TaxRIS/createPfmFromCRSDtl/SndCrs; # URL ต้นทาง
+            proxy_pass http://tws.mof.gov.la:8080/mediate/TaxRIS/createPfmFromCRSDtl/SndCrs;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
