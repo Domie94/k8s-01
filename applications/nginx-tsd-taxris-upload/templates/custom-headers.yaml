@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: custom-headers
-data:
-  X-Forwarded-For: $remote_addr
-  X-Forwarded-Host: $host
-  
