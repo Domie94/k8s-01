@@ -1,8 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argocd-ing
-  namespace: argocd
+  name: taxris-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -11,7 +10,7 @@ spec:
   tls:
     - hosts:
       - taxris.hometsd.me
-      secretName: argocd-hometsd-me-tls
+      secretName: taxris-hometsd-me-tls
   rules:
     - host: taxris.hometsd.me
       http:
