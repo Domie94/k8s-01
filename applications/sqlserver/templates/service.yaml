@@ -6,8 +6,8 @@ metadata:
     app: {{ .Chart.Name }}
 spec:
   ports:
-    - port: 1433
-      targetPort: 1433
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
       protocol: TCP
   clusterIP: None
   selector:

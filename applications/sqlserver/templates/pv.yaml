@@ -9,6 +9,7 @@ spec:
     storage: {{ .Values.persistence.size }}
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: {{ .Values.persistence.reclaimPolicy }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
   hostPath:
-    path: /mnt/data/{{ .Release.Name }}-mssql # Update based on your environment
+    path: /mnt/data/{{ .Release.Name }}-mssql

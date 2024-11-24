@@ -22,7 +22,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 1433
+            - containerPort: {{ .Values.service.port }}
               name: tcpsql
           env:
             - name: ACCEPT_EULA
@@ -33,9 +33,15 @@ spec:
                   name: {{ .Values.secret.name }}
                   key: {{ .Values.secret.key }}
           volumeMounts:
-            - name: mssql
+            - name: mssql-storage
               mountPath: /var/opt/mssql
-      volumes:
-        - name: mssql
-          persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-mssql-pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: mssql-storage
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: {{ .Values.persistence.size }}
+        storageClassName: "{{ .Values.persistence.storageClass }}"
