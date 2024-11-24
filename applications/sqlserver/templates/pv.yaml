@@ -1,15 +1,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: {{ .Release.Name }}-mssql-pv
+  name: sqlserver-pv
   labels:
-    app: {{ .Chart.Name }}
+    app: sqlserver
 spec:
   capacity:
-    storage: {{ .Values.persistence.size }}
+    storage: 30Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: "manual"
   hostPath:
-    path: /mnt/data/{{ .Release.Name }}-mssql # Replace this path with a directory on the node
+    path: /mnt/data/sqlserver # Replace with a directory on your node
