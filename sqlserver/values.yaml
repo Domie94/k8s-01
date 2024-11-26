@@ -1,0 +1,8 @@
+global:
+  storageClass: "openebs-kernel-nfs" # Change this
+
+auth:
+  database: test
+  rootPassword: 'mieUi@do#2024'
+  username: test
+  password: 'mieUi@do#2024'
