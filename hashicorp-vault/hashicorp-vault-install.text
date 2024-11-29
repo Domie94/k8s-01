@@ -1,0 +1,25 @@
+helm repo add hashicorp https://helm.releases.hashicorp.com
+helm repo update
+
+kubectl create namespace vault
+
+#values.yaml
+server:
+  ha:
+    enabled: false
+  dataStorage:
+    enabled: true
+    size: 10Gi
+  extraEnvironmentVars:
+    VAULT_DEV_ROOT_TOKEN_ID: "root"
+    VAULT_DEV_LISTEN_ADDRESS: "0.0.0.0:8200"
+
+helm install vault hashicorp/vault -n vault -f values.yaml
+
+kubectl exec -n vault vault-0 -- vault operator init
+
+kubectl exec -n vault vault-0 -- vault operator unseal <UNSEAL_KEY>
+
+kubectl exec -n vault vault-0 -- vault operator unseal <UNSEAL_KEY_1>
+kubectl exec -n vault vault-0 -- vault operator unseal <UNSEAL_KEY_2>
+kubectl exec -n vault vault-0 -- vault operator unseal <UNSEAL_KEY_3>
