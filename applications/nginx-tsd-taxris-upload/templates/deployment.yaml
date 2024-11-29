@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taxris-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: taxris-nginx
+  template:
+    metadata:
+      labels:
+        app: taxris-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: taxris-nginx-config

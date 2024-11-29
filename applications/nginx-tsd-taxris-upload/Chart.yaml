@@ -1,0 +1,6 @@
+apiVersion: v2
+name: nginx-tsd-taxris-upload
+description: A Helm chart for deploying NGINX Reverse Proxy
+type: application
+version: 1.0.0
+appVersion: 1.21.6
