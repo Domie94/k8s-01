@@ -15,9 +15,9 @@ spec:
             pathType: {{ (index (index .Values.ingress.hosts 0).paths 0).pathType }}
             backend:
               service:
-                name: {{ include "quotation-api.fullname" . }}
+                name: {{ include "testing.fullname" $ }}
                 port:
-                  number: {{ .Values.service.port }}
+                  number: {{ $.Values.service.port }}
   tls:
     - hosts:
         - {{ (index .Values.ingress.hosts 0).host }}
