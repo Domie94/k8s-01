@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: registry.gitlab.com/dotsd/tsd-quotation-api
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: "latest"
 
 imagePullSecrets : [gitlab-secert]
