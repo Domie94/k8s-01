@@ -67,18 +67,18 @@ ingress:
     kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
     nginx.ingress.kubernetes.io/rewrite-target: /
-    
+
     # Rate Limiting (ป้องกันการโจมตีแบบ DDoS)
     nginx.ingress.kubernetes.io/limit-connections: "20"                # จำกัดการเชื่อมต่อพร้อมกัน
     nginx.ingress.kubernetes.io/limit-rps: "10"                       # จำกัด requests per second
     nginx.ingress.kubernetes.io/limit-burst-multiplier: "2"           # อนุญาต burst requests
 
-    # CORS (เปิดให้เฉพาะโดเมนที่อนุญาต)
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
-    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
-    nginx.ingress.kubernetes.io/cors-allow-headers: "Authorization, Content-Type"
-    nginx.ingress.kubernetes.io/cors-max-age: "3600"
+    # # CORS (เปิดให้เฉพาะโดเมนที่อนุญาต)
+    # nginx.ingress.kubernetes.io/enable-cors: "true"
+    # nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    # nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
+    # nginx.ingress.kubernetes.io/cors-allow-headers: "Authorization, Content-Type"
+    # nginx.ingress.kubernetes.io/cors-max-age: "3600"
 
     # #limitip
     # nginx.ingress.kubernetes.io/whitelist-source-range: "183.182.110.127"
@@ -126,15 +126,15 @@ livenessProbe:
     path: /
     port: 3000
   initialDelaySeconds: 30
-  periodSeconds: 10
+  periodSeconds: 120
   timeoutSeconds: 5
   failureThreshold: 3
 readinessProbe:
   httpGet:
     path: /
     port: 3000
-  initialDelaySeconds: 10
-  periodSeconds: 5
+  initialDelaySeconds: 30
+  periodSeconds: 120
   timeoutSeconds: 2
   failureThreshold: 3
 
