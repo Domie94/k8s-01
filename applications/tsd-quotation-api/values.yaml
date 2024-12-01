@@ -86,7 +86,7 @@ ingress:
     nginx.ingress.kubernetes.io/whitelist-source-range: "183.182.110.127"
 
     # Security Headers
-    nginx.ingress.kubernetes.io/server-snippet: |
+    nginx.ingress.kubernetes.io/configuration-snippet: |
       add_header X-Content-Type-Options nosniff;
       add_header X-Frame-Options DENY;
       add_header X-XSS-Protection "1; mode=block";
