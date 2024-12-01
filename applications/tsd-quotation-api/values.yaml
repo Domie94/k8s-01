@@ -78,20 +78,20 @@ ingress:
 
     # CORS (เปิดให้เฉพาะโดเมนที่อนุญาต)
     nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "https://tsdvpn.com"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
     nginx.ingress.kubernetes.io/cors-allow-headers: "Authorization, Content-Type"
     nginx.ingress.kubernetes.io/cors-max-age: "3600"
 
-    #limitip
-    nginx.ingress.kubernetes.io/whitelist-source-range: "183.182.110.127"
+    # #limitip
+    # nginx.ingress.kubernetes.io/whitelist-source-range: "183.182.110.127"
 
-    # # Security Headers
-    # nginx.ingress.kubernetes.io/configuration-snippet: |
-    #   add_header X-Content-Type-Options nosniff;
-    #   add_header X-Frame-Options DENY;
-    #   add_header X-XSS-Protection "1; mode=block";
-    #   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    # Security Headers
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header X-Content-Type-Options nosniff;
+      add_header X-Frame-Options DENY;
+      add_header X-XSS-Protection "1; mode=block";
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 
     # # Buffering and Timeouts (เพิ่มประสิทธิภาพ)
     # nginx.ingress.kubernetes.io/proxy-buffering: "on"
