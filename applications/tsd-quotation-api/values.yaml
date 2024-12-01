@@ -70,6 +70,11 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
+     # Rate Limiting (ป้องกันการโจมตีแบบ DDoS)
+    nginx.ingress.kubernetes.io/limit-connections: "20"                # จำกัดการเชื่อมต่อพร้อมกัน
+    nginx.ingress.kubernetes.io/limit-rps: "10"                       # จำกัด requests per second
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: "2"           # อนุญาต burst requests
+
   hosts:
     - host: api.quotation.tsdrancher.com
       paths:
