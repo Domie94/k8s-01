@@ -1,30 +1,18 @@
 postgresql:
   auth:
-    existingSecret: new-password-secret
-
-  passwordUpdateJob:
-    enabled: true
-    previousPasswords:
-      existingSecret: previous-password-secret
-
-# pgadmin4:
-#   ingress:
-#     enabled: true
-#     className: "nginx"
-#     annotations:
-#       kubernetes.io/ingress.class: "nginx"
-#       cert-manager.io/cluster-issuer: "letsencrypt-prod"
-#     hosts:
-#       - host: pgadmin.tsdrancher.com
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#     tls: 
-#       - secretName: pgadmin-tsdrancher-tls
-#         hosts:
-#           - pgadmin.tsdrancher.com
-#   secretKeys:
-#     pgadminPasswordKey: pgadmin-password
-#   env:
-#     email: chart@d2323omain.com
-#     password: SuperSecret2323
+    ## @param auth.enablePostgresUser Assign a password to the "postgres" admin user. Otherwise, remote access will be blocked for this user
+    ##
+    enablePostgresUser: true
+    ## @param auth.postgresPassword Password for the "postgres" admin user. Ignored if `auth.existingSecret` is provided
+    ##
+    postgresPassword: "sqladmin"
+    ## @param auth.username Name for a custom user to create
+    ##
+    username: "admin"
+    ## @param auth.password Password for the custom user to create. Ignored if `auth.existingSecret` is provided
+    ##
+    password: "sql"
+    ## @param auth.database Name for a custom database to create
+    ##
+    database: "testing"
+    ## @param auth.replicationUsername Name of the replication user
