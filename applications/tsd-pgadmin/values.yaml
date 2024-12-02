@@ -1,19 +1,22 @@
-envVarsFromSecrets:
-  - pgadmin4-env-secret
-
 ingress:
-  enabled: true
+  enabled: enabled
   annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod" # Optional for TLS
-  ingressClassName: "nginx" # Use the appropriate ingress class (e.g., nginx)
+  ingressClassName: "nginx"
   hosts:
     - host: pgadmin.tsdrancher.com
       paths:
         - path: /
-          pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - pgadmin.tsdrancher.com
-      secretName: pgadmin4-tls-secret # TLS secret name
+          pathType: Prefix
+  tls: 
+   - secretName: pgadmin-tsdrancher-com-tls
+     hosts:
+       - pgadmin.tsdrancher.com
+secretKeys:
+  pgadminPasswordKey: password
+env:
+  email: chart@domain.com
+  password: SuperSecret
