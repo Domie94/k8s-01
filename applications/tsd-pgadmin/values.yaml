@@ -10,7 +10,7 @@ pgadmin4:
       - host: pgadmin.tsdrancher.com
         paths:
           - path: /
-            pathType: ImplementationSpecific
+            pathType: Prefix
     tls: 
     - secretName: pgadmin-tsdrancher-tls
       hosts:
