@@ -68,36 +68,36 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
     nginx.ingress.kubernetes.io/rewrite-target: /
 
-    # # Rate Limiting (ป้องกันการโจมตีแบบ DDoS)
-    # nginx.ingress.kubernetes.io/limit-connections: "20"                # จำกัดการเชื่อมต่อพร้อมกัน
-    # nginx.ingress.kubernetes.io/limit-rps: "10"                       # จำกัด requests per second
-    # nginx.ingress.kubernetes.io/limit-burst-multiplier: "2"           # อนุญาต burst requests
+    # Rate Limiting (ป้องกันการโจมตีแบบ DDoS)
+    nginx.ingress.kubernetes.io/limit-connections: "20"                # จำกัดการเชื่อมต่อพร้อมกัน
+    nginx.ingress.kubernetes.io/limit-rps: "10"                       # จำกัด requests per second
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: "2"           # อนุญาต burst requests
 
-    # # CORS (เปิดให้เฉพาะโดเมนที่อนุญาต)
-    # nginx.ingress.kubernetes.io/enable-cors: "true"
-    # nginx.ingress.kubernetes.io/cors-allow-origin: "*"
-    # nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
-    # nginx.ingress.kubernetes.io/cors-allow-headers: "Authorization, Content-Type"
-    # nginx.ingress.kubernetes.io/cors-max-age: "3600"
+    # CORS (เปิดให้เฉพาะโดเมนที่อนุญาต)
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "Authorization, Content-Type"
+    nginx.ingress.kubernetes.io/cors-max-age: "3600"
 
     # #limitip
     # nginx.ingress.kubernetes.io/whitelist-source-range: "183.182.110.127"
 
-    # # Buffering and Timeouts (เพิ่มประสิทธิภาพ)
-    # nginx.ingress.kubernetes.io/proxy-buffering: "on"
-    # nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
-    # nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
-    # nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
-    # nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
+    # Buffering and Timeouts (เพิ่มประสิทธิภาพ)
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
 
-    # # SSL (เพิ่มความปลอดภัย)
-    # nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    # nginx.ingress.kubernetes.io/proxy-ssl-verify: "on"
+    # SSL (เพิ่มความปลอดภัย)
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: "on"
 
-    # # Logging (สำหรับ Debugging)
-    # nginx.ingress.kubernetes.io/enable-access-log: "true"
-    # nginx.ingress.kubernetes.io/enable-error-log: "true"
+    # Logging (สำหรับ Debugging)
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/enable-error-log: "true"
 
     
 
