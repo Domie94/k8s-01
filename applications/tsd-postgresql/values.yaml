@@ -1,7 +1,11 @@
 postgresql:
   auth:
-    enablePostgresUser: true
-    postgresPassword: "sqladmin"
-    username: "admin"
-    password: "sql"
-    database: "testing"
+    existingSecret: new-password-secret
+    
+  primary:
+    persistence:
+      size: 20Gi
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenScaled: Retain
+      whenDeleted: Retain
