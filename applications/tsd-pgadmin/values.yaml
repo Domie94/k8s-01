@@ -1,5 +1,5 @@
 
-  existingSecret: pgadmin-password-secret
+  envVarsFromSecrets: evn-pgamin
 
   service:
   type: ClusterIP
