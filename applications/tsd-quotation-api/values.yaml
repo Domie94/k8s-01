@@ -70,7 +70,7 @@ ingress:
     kubernetes.io/tls-acme: "true"                      # ใช้ ACME protocol สำหรับสร้างใบรับรอง TLS
 
     # Proxy และ Body Size
-    nginx.ingress.kubernetes.io/proxy-body-size: "100m" # กำหนดขนาดสูงสุดของข้อมูลที่ Ingress จะรับได้
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m" # กำหนดขนาดสูงสุดของข้อมูลที่ Ingress จะรับได้
     nginx.ingress.kubernetes.io/rewrite-target: /      # แปลงเส้นทางไปยังรากของ backend
 
     # Rate Limiting (ป้องกัน DDoS)
@@ -89,8 +89,8 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-buffering: "on"                 # เปิดการบัฟเฟอร์ข้อมูล
     nginx.ingress.kubernetes.io/proxy-buffers-number: "4"             # จำนวนบัฟเฟอร์
     nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"              # ขนาดของแต่ละบัฟเฟอร์
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"             # เวลารออ่านข้อมูลจาก backend (วินาที)
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"             # เวลารอส่งข้อมูลไป backend (วินาที)
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "10"             # เวลารออ่านข้อมูลจาก backend (วินาที)
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "10"             # เวลารอส่งข้อมูลไป backend (วินาที)
 
     # SSL (เพิ่มความปลอดภัย)
     nginx.ingress.kubernetes.io/ssl-redirect: "true"                  # บังคับเปลี่ยน HTTP เป็น HTTPS
