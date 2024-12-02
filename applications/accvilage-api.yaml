@@ -1,30 +1,30 @@
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: accvillage-api
-  namespace: argocd
-spec:
-  generators:
-    - git:
-        repoURL: 'https://github.com/Domie94/k8s-01.git'
-        revision: main
-        directories:
-          - path: 'applications/accvillage-api'
-  template:
-    metadata:
-      name: '{{path.basename}}'
-    spec:
-      project: default
-      source:
-        repoURL: 'https://github.com/Domie94/k8s-01.git'
-        targetRevision: main
-        path: '{{path}}'
-      destination:
-        server: 'https://kubernetes.default.svc'
-        namespace: accvillage-api
-      syncPolicy:
-        automated:
-          prune: true  # Enable pruning of resources that are no longer in Git
-          selfHeal: true  # Enable self-healing to keep the app in sync automatically
-        syncOptions:
-          - CreateNamespace=true  # Ensure namespace is created if it doesn't exist
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: accvillage-api
+#   namespace: argocd
+# spec:
+#   generators:
+#     - git:
+#         repoURL: 'https://github.com/Domie94/k8s-01.git'
+#         revision: main
+#         directories:
+#           - path: 'applications/accvillage-api'
+#   template:
+#     metadata:
+#       name: '{{path.basename}}'
+#     spec:
+#       project: default
+#       source:
+#         repoURL: 'https://github.com/Domie94/k8s-01.git'
+#         targetRevision: main
+#         path: '{{path}}'
+#       destination:
+#         server: 'https://kubernetes.default.svc'
+#         namespace: accvillage-api
+#       syncPolicy:
+#         automated:
+#           prune: true  # Enable pruning of resources that are no longer in Git
+#           selfHeal: true  # Enable self-healing to keep the app in sync automatically
+#         syncOptions:
+#           - CreateNamespace=true  # Ensure namespace is created if it doesn't exist
