@@ -1,14 +1,14 @@
 postgresql:
   architecture: "replication"
-
+  
   auth:
-    user: "user"
-    postgresPassword: "newPostgresPassword123"
-    password: "newUserPassword123"
-    replicationPassword: "newReplicationPassword123"
+    user: "dev"
+    postgresPassword: "bmV3R2VuZXJhdGVkUGFzc3dvcmQxMjM=" 
+    password: "bmV3VXNlclBhc3N3b3JkMTIz" 
+    replicationPassword: "bmV3UmVwbGljYXRpb25QYXNzd29yZDEyMw=="
+  passwordUpdateJob:
+    enabled: true
 
-passwordUpdateJob:
-  enabled: true
 pgadmin4:
   ingress:
     enabled: true
