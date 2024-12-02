@@ -105,7 +105,7 @@ ingress:
     - host: api.quotation.tsdrancher.com
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: prefix
   tls: 
    - secretName: api-quotation-tsdrancher-com-tls
      hosts:
@@ -125,18 +125,18 @@ livenessProbe:
   httpGet:
     path: /
     port: 3000
-  initialDelaySeconds: 30
-  periodSeconds: 120
-  timeoutSeconds: 5
-  failureThreshold: 3
+  # initialDelaySeconds: 30
+  # periodSeconds: 120
+  # timeoutSeconds: 5
+  # failureThreshold: 3
 readinessProbe:
   httpGet:
     path: /
     port: 3000
-  initialDelaySeconds: 30
-  periodSeconds: 120
-  timeoutSeconds: 2
-  failureThreshold: 3
+  # initialDelaySeconds: 30
+  # periodSeconds: 120
+  # timeoutSeconds: 2
+  # failureThreshold: 3
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
