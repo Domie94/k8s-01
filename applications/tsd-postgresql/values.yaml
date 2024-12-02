@@ -1,7 +1,8 @@
-auth:
-  existingSecret: new-password-secret
+postgresql:
+  auth:
+    existingSecret: new-password-secret
 
-passwordUpdateJob:
-  enabled: true
-  previousPasswords:
-    existingSecret: previous-password-secret
+  passwordUpdateJob:
+    enabled: true
+    previousPasswords:
+      existingSecret: previous-password-secret
