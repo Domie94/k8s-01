@@ -1,4 +1,4 @@
-apiVersion: v3
+apiVersion: v2
 name: tsd-postgresql
 description: A Helm chart for Kubernetes
 
@@ -28,10 +28,4 @@ dependencies:
     condition: postgresql.enabled
     repository: "https://charts.bitnami.com/bitnami"
     version: "16.2.3"
-
-  - name: "pgadmin4"
-    alias: pgadmin4
-    condition: pgadmin4.enabled
-    repository: "https://helm.runix.net"
-    version: "1.33.2"
 
