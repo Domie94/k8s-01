@@ -105,7 +105,7 @@ ingress:
     - host: api.quotation.tsdrancher.com
       paths:
         - path: /
-          pathType: prefix
+          pathType: Prefix
   tls: 
    - secretName: api-quotation-tsdrancher-com-tls
      hosts:
