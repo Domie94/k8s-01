@@ -1,6 +1,5 @@
-
-envVarsFromSecrets: 
-  name: evn-pgamin
+envVarsFromSecrets:
+  - pgadmin4-env-secret
 
 ingress:
   enabled: true
@@ -10,11 +9,11 @@ ingress:
     cert-manager.io/cluster-issuer: "letsencrypt-prod" # Optional for TLS
   ingressClassName: "nginx" # Use the appropriate ingress class (e.g., nginx)
   hosts:
-    - host: pgadmin.example.com # Replace with your domain
+    - host: pgadmin.tsdrancher.com
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
     - hosts:
-        - pgadmin.example.com
+        - pgadmin.tsdrancher.com
       secretName: pgadmin4-tls-secret # TLS secret name
