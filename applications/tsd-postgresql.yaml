@@ -1,30 +1,30 @@
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: tsd-postgresql
-  namespace: argocd
-spec:
-  generators:
-    - git:
-        repoURL: 'https://github.com/Domie94/k8s-01.git'
-        revision: main
-        directories:
-          - path: 'applications/tsd-postgresql'
-  template:
-    metadata:
-      name: '{{path.basename}}'
-    spec:
-      project: default
-      source:
-        repoURL: 'https://github.com/Domie94/k8s-01.git'
-        targetRevision: main
-        path: '{{path}}'
-      destination:
-        server: 'https://kubernetes.default.svc'
-        namespace: tsd-postgresql
-      syncPolicy:
-        automated:
-          prune: true  # Enables automatic pruning of resources not defined in Git
-          selfHeal: true  # Enables automatic self-healing to keep the application in sync
-        syncOptions:
-          - CreateNamespace=true  # Ensures the namespace is created if it doesn’t already exist
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: tsd-postgresql
+#   namespace: argocd
+# spec:
+#   generators:
+#     - git:
+#         repoURL: 'https://github.com/Domie94/k8s-01.git'
+#         revision: main
+#         directories:
+#           - path: 'applications/tsd-postgresql'
+#   template:
+#     metadata:
+#       name: '{{path.basename}}'
+#     spec:
+#       project: default
+#       source:
+#         repoURL: 'https://github.com/Domie94/k8s-01.git'
+#         targetRevision: main
+#         path: '{{path}}'
+#       destination:
+#         server: 'https://kubernetes.default.svc'
+#         namespace: tsd-postgresql
+#       syncPolicy:
+#         automated:
+#           prune: true  # Enables automatic pruning of resources not defined in Git
+#           selfHeal: true  # Enables automatic self-healing to keep the application in sync
+#         syncOptions:
+#           - CreateNamespace=true  # Ensures the namespace is created if it doesn’t already exist
