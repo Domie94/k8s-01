@@ -3,9 +3,9 @@ postgresql:
   
   auth:
     user: "dev"
-    postgresPassword: "bmV3R2VuZXJhdGVkUGFzc3dvcmQxMjM=" 
-    password: "bmV3VXNlclBhc3N3b3JkMTIz" 
-    replicationPassword: "bmV3UmVwbGljYXRpb25QYXNzd29yZDEyMw=="
+    postgresPassword: "435435435" 
+    password: "3435435435" 
+    replicationPassword: "do23232134"
   passwordUpdateJob:
     enabled: true
 
