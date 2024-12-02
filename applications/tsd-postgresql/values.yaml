@@ -1,18 +1,7 @@
 postgresql:
   auth:
-    ## @param auth.enablePostgresUser Assign a password to the "postgres" admin user. Otherwise, remote access will be blocked for this user
-    ##
     enablePostgresUser: true
-    ## @param auth.postgresPassword Password for the "postgres" admin user. Ignored if `auth.existingSecret` is provided
-    ##
     postgresPassword: "sqladmin"
-    ## @param auth.username Name for a custom user to create
-    ##
     username: "admin"
-    ## @param auth.password Password for the custom user to create. Ignored if `auth.existingSecret` is provided
-    ##
     password: "sql"
-    ## @param auth.database Name for a custom database to create
-    ##
     database: "testing"
-    ## @param auth.replicationUsername Name of the replication user
