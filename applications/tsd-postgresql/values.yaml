@@ -1,0 +1,7 @@
+auth:
+  existingSecret: new-password-secret
+
+passwordUpdateJob:
+  enabled: true
+  previousPasswords:
+    existingSecret: previous-password-secret
