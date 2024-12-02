@@ -1,14 +1,14 @@
 
-  envVarsFromSecrets: 
-   - name: evn-pgamin
+envVarsFromSecrets: 
+  - name: evn-pgamin
 
-  service:
+service:
   type: ClusterIP
   port: 80
 
-  ingress:
+ingress:
   enabled: true
-  ClassName: "nginx"
+  ingressClassName: "nginx"
   annotations:
     kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
