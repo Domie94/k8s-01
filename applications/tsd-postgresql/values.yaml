@@ -1,13 +1,12 @@
 postgresql:
   auth:
-    user: "user"
-    postgresPassword: "newPostgresPassword123"
-    password: "newUserPassword123"
-    replicationPassword: "newReplicationPassword123"
+    existingSecret: new-password-secret
 
   passwordUpdateJob:
     enabled: true
-    
+    previousPasswords:
+      existingSecret: previous-password-secret
+
 pgadmin4:
   ingress:
     enabled: true
