@@ -28,8 +28,8 @@ dependencies:
     condition: postgresql.enabled
     repository: "https://charts.bitnami.com/bitnami"
     version: "16.2.3"
-  
-    - name: "pgadmin4"
+
+  - name: "pgadmin4"
     alias: pgadmin4
     condition: pgadmin4.enabled
     repository: "https://helm.runix.net"
