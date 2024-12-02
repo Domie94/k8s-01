@@ -1,0 +1,22 @@
+
+  existingSecret: pgadmin-password-secret
+
+  service:
+  type: ClusterIP
+  port: 80
+
+  ingress:
+  enabled: true
+  ingressClassName: "nginx"
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  hosts:
+    - host: pgadmin.tsdrancher.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - pgadmin.tsdrancher.com
+      secretName: pgadmin-tsdrancher-com-tls
