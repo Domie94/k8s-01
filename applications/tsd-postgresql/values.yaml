@@ -1,7 +1,6 @@
 postgresql:
   auth:
     existingSecret: new-password-secret
-    
   primary:
     persistence:
       size: 20Gi
