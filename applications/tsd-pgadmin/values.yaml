@@ -1,5 +1,6 @@
 
-  envVarsFromSecrets: evn-pgamin
+  envVarsFromSecrets: 
+   - name: evn-pgamin
 
   service:
   type: ClusterIP
