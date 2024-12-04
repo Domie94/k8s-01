@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: tsd-quotation-web
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: 'https://github.com/Domie94/k8s-01.git'
+        revision: main
+        directories:
+          - path: 'applications/tsd-quotation-web'
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/Domie94/k8s-01.git'
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: tsd-quotation-web
+      syncPolicy:
+        automated:
+          prune: true  # Enable pruning of resources that are no longer in Git
+          selfHeal: true  # Enable self-healing to keep the app in sync automatically
+        syncOptions:
+          - CreateNamespace=true  # Ensure namespace is created if it doesn't exist
