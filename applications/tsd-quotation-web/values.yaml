@@ -151,12 +151,17 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes:
-- name: proxy-temp
+- name: temp-storage
   emptyDir: {}
+- name: nginx-cache
+  mptyDir: {}
+  
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-- name: proxy-temp
-  mountPath: /tmp/proxy_temp
+- name: temp-storage
+  mountPath: /tmp
+- name: nginx-cache
+  mountPath: /var/cache/nginx
 
 nodeSelector: {}
 
