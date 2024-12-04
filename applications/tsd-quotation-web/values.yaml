@@ -11,7 +11,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.8"
+  tag: "v1.0.9"
 
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets:
@@ -151,16 +151,13 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes:
-- name: nginx-cache
-  emptyDir: {}
-- name: tmp-dir
+- name: proxy-temp
   emptyDir: {}
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-- name: nginx-cache
-  mountPath: /var/cache/nginx
-- name: tmp-dir
-  mountPath: /tmp/client_body
+- name: proxy-temp
+  mountPath: /tmp/proxy_temp
+
 nodeSelector: {}
 
 tolerations: []
