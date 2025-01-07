@@ -1,5 +1,5 @@
 apiVersion: V3
-name: rabbitMQ
+name: rabbitmq
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
