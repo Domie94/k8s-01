@@ -1,3 +1,0 @@
-rabbitmq:
-  auth:
-    existingSecretPasswordKey: rabbirmq-password-secret
