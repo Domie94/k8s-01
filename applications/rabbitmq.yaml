@@ -9,7 +9,7 @@ spec:
         repoURL: 'https://github.com/Domie94/k8s-01.git'
         revision: main
         directories:
-          - path: 'applications/rabbitMQ'
+          - path: 'applications/rabbitmq'
   template:
     metadata:
       name: '{{path.basename}}'
