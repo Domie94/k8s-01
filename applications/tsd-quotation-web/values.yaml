@@ -11,14 +11,14 @@ image:
   # This sets the pull policy for images.
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.16"
+  tag: 'v1.0.18'
 
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets:
   - name: gitlab-secert
 # This is to override the chart name.
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: ''
+fullnameOverride: ''
 
 #This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
 serviceAccount:
@@ -30,10 +30,10 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: ''
 
 # This is for setting Kubernetes Annotations to a Pod.
-# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/ 
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 podAnnotations: {}
 # This is for setting Kubernetes Labels to a Pod.
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
@@ -42,7 +42,8 @@ podLabels: {}
 podSecurityContext:
   fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -60,46 +61,46 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "nginx"
-  annotations: 
-     # Ingress class
+  className: 'nginx'
+  annotations:
+    # Ingress class
     kubernetes.io/ingress.class: nginx
 
     # Cert-Manager สำหรับ SSL
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"   # ระบุ ClusterIssuer ของ Cert-Manager
-    kubernetes.io/tls-acme: "true"                      # ใช้ ACME protocol สำหรับสร้างใบรับรอง TLS
+    cert-manager.io/cluster-issuer: 'letsencrypt-prod' # ระบุ ClusterIssuer ของ Cert-Manager
+    kubernetes.io/tls-acme: 'true' # ใช้ ACME protocol สำหรับสร้างใบรับรอง TLS
 
     # Proxy และ Body Size
-    nginx.ingress.kubernetes.io/proxy-body-size: "50m" # กำหนดขนาดสูงสุดของข้อมูลที่ Ingress จะรับได้
-    nginx.ingress.kubernetes.io/rewrite-target: /      # แปลงเส้นทางไปยังรากของ backend
+    nginx.ingress.kubernetes.io/proxy-body-size: '50m' # กำหนดขนาดสูงสุดของข้อมูลที่ Ingress จะรับได้
+    nginx.ingress.kubernetes.io/rewrite-target: / # แปลงเส้นทางไปยังรากของ backend
 
     # Rate Limiting (ป้องกัน DDoS)
-    nginx.ingress.kubernetes.io/limit-connections: "20"                # จำกัดการเชื่อมต่อพร้อมกันต่อ IP
-    nginx.ingress.kubernetes.io/limit-rps: "10"                       # จำกัด requests ต่อวินาทีต่อ IP
-    nginx.ingress.kubernetes.io/limit-burst-multiplier: "2"           # อนุญาต burst requests
+    nginx.ingress.kubernetes.io/limit-connections: '20' # จำกัดการเชื่อมต่อพร้อมกันต่อ IP
+    nginx.ingress.kubernetes.io/limit-rps: '10' # จำกัด requests ต่อวินาทีต่อ IP
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: '2' # อนุญาต burst requests
 
     # CORS (เปิดการใช้งานข้ามโดเมน)
-    nginx.ingress.kubernetes.io/enable-cors: "true"                   # เปิดการใช้งาน CORS
-    nginx.ingress.kubernetes.io/cors-allow-origin: "*"                # อนุญาตทุกโดเมน (*ควรปรับสำหรับการใช้งานจริง)
-    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS" # HTTP Methods ที่อนุญาต
-    nginx.ingress.kubernetes.io/cors-allow-headers: "Authorization, Content-Type"    # HTTP Headers ที่อนุญาต
-    nginx.ingress.kubernetes.io/cors-max-age: "3600"                  # อายุของข้อมูล CORS ใน cache
+    nginx.ingress.kubernetes.io/enable-cors: 'true' # เปิดการใช้งาน CORS
+    nginx.ingress.kubernetes.io/cors-allow-origin: '*' # อนุญาตทุกโดเมน (*ควรปรับสำหรับการใช้งานจริง)
+    nginx.ingress.kubernetes.io/cors-allow-methods: 'GET, POST, PUT, DELETE, OPTIONS' # HTTP Methods ที่อนุญาต
+    nginx.ingress.kubernetes.io/cors-allow-headers: 'Authorization, Content-Type' # HTTP Headers ที่อนุญาต
+    nginx.ingress.kubernetes.io/cors-max-age: '3600' # อายุของข้อมูล CORS ใน cache
 
     # Buffering และ Timeouts (ปรับประสิทธิภาพ)
-    nginx.ingress.kubernetes.io/proxy-buffering: "on"                 # เปิดการบัฟเฟอร์ข้อมูล
-    nginx.ingress.kubernetes.io/proxy-buffers-number: "4"             # จำนวนบัฟเฟอร์
-    nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"              # ขนาดของแต่ละบัฟเฟอร์
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "10"             # เวลารออ่านข้อมูลจาก backend (วินาที)
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "10"             # เวลารอส่งข้อมูลไป backend (วินาที)
+    nginx.ingress.kubernetes.io/proxy-buffering: 'on' # เปิดการบัฟเฟอร์ข้อมูล
+    nginx.ingress.kubernetes.io/proxy-buffers-number: '4' # จำนวนบัฟเฟอร์
+    nginx.ingress.kubernetes.io/proxy-buffer-size: '16k' # ขนาดของแต่ละบัฟเฟอร์
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '10' # เวลารออ่านข้อมูลจาก backend (วินาที)
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '10' # เวลารอส่งข้อมูลไป backend (วินาที)
 
     # SSL (เพิ่มความปลอดภัย)
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"                  # บังคับเปลี่ยน HTTP เป็น HTTPS
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"            # บังคับใช้งาน SSL ตลอดเวลา
-    nginx.ingress.kubernetes.io/proxy-ssl-verify: "on"                # ตรวจสอบ SSL ระหว่าง Ingress และ backend
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true' # บังคับเปลี่ยน HTTP เป็น HTTPS
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true' # บังคับใช้งาน SSL ตลอดเวลา
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: 'on' # ตรวจสอบ SSL ระหว่าง Ingress และ backend
 
     # Logging (สำหรับ Debugging)
-    nginx.ingress.kubernetes.io/enable-access-log: "true"             # เปิด Access Logs
-    nginx.ingress.kubernetes.io/enable-error-log: "true"              # เปิด Error Logs
+    nginx.ingress.kubernetes.io/enable-access-log: 'true' # เปิด Access Logs
+    nginx.ingress.kubernetes.io/enable-error-log: 'true' # เปิด Error Logs
 
   hosts:
     - host: quotation.tsdrancher.com
@@ -107,11 +108,11 @@ ingress:
         - path: /
           pathType: Prefix
   tls:
-   - secretName: quotation-tsdrancher-tls
-     hosts:
-       - quotation.tsdrancher.com
+    - secretName: quotation-tsdrancher-tls
+      hosts:
+        - quotation.tsdrancher.com
 
-resources: 
+resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
